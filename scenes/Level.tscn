@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=3 uid="uid://du50vkf58qhp6"]
+
+[ext_resource type="Script" uid="uid://coqs1nrlsd1aj" path="res://assets/scripts/level.gd" id="1_uhqny"]
+[ext_resource type="PackedScene" uid="uid://xn6qq22h2rpg" path="res://scenes/Enemy.tscn" id="2_6vs76"]
+[ext_resource type="PackedScene" uid="uid://dy16qsjlh08hc" path="res://scenes/player.tscn" id="3_kl8ac"]
+[ext_resource type="Texture2D" uid="uid://ck3siqmfj5lp1" path="res://assets/images/bg-back.png" id="4_kl8ac"]
+[ext_resource type="Texture2D" uid="uid://d01u3gyilb6hy" path="res://assets/images/bg-planet.png" id="5_qifjx"]
+
+[sub_resource type="Curve2D" id="Curve2D_k5jlv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 266, -1, 0, 0, 0, 0, 265, 158, 0, 0, 0, 0, 275, 158, 0, 0, 0, 0, 275, 157, 0, 0, 0, 0, 275, -1, 0, 0, 0, 0, 266, 0)
+}
+point_count = 6
+
+[node name="Level" type="Node2D" groups=["Level"]]
+script = ExtResource("1_uhqny")
+enemy = ExtResource("2_6vs76")
+player = ExtResource("3_kl8ac")
+
+[node name="Settings" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Settings"]
+
+[node name="Timer" type="Timer" parent="Settings"]
+wait_time = 2.0
+autostart = true
+
+[node name="Background" type="Node" parent="."]
+
+[node name="Back" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/Back"]
+motion_mirroring = Vector2(272, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Back/ParallaxLayer"]
+texture = ExtResource("4_kl8ac")
+centered = false
+
+[node name="PathSpawn" type="Path2D" parent="Background"]
+curve = SubResource("Curve2D_k5jlv")
+
+[node name="PathFollow" type="PathFollow2D" parent="Background/PathSpawn"]
+position = Vector2(266, -1)
+rotation = 1.57709
+
+[node name="Planet_1" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/Planet_1"]
+motion_mirroring = Vector2(544, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Planet_1/ParallaxLayer"]
+position = Vector2(129, 92)
+scale = Vector2(0.860294, 0.840625)
+texture = ExtResource("5_qifjx")
+
+[node name="Planet_2" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/Planet_2"]
+motion_mirroring = Vector2(544, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Planet_2/ParallaxLayer"]
+position = Vector2(51, 2.38419e-07)
+scale = Vector2(0.84, 0.84)
+texture = ExtResource("5_qifjx")
+centered = false
+offset = Vector2(272, 0)
+flip_v = true
+
+[node name="Stars" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/Stars"]
+motion_mirroring = Vector2(272, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Stars/ParallaxLayer"]
+position = Vector2(616, 22)
+scale = Vector2(0.333333, 0.333333)
+centered = false
+offset = Vector2(272, 0)
+flip_v = true
+
+[node name="PositionPlayer" type="Marker2D" parent="."]
+position = Vector2(117, 70)
+
+[connection signal="timeout" from="Settings/Timer" to="." method="_on_timer_timeout"]

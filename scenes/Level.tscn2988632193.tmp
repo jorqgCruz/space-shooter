@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://du50vkf58qhp6"]
+
+[ext_resource type="Script" uid="uid://coqs1nrlsd1aj" path="res://assets/scripts/level.gd" id="1_uhqny"]
+[ext_resource type="Texture2D" uid="uid://d1swkymy06t6v" path="res://assets/images/bg-preview-big.png" id="2_k5jlv"]
+[ext_resource type="Script" uid="uid://cn3w1u3sra0jm" path="res://assets/scripts/player.gd" id="4_kl8ac"]
+
+[sub_resource type="Curve2D" id="Curve2D_k5jlv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 266, -1, 0, 0, 0, 0, 265, 158, 0, 0, 0, 0, 275, 158, 0, 0, 0, 0, 275, 157, 0, 0, 0, 0, 275, -1, 0, 0, 0, 0, 266, 0)
+}
+point_count = 6
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_uhqny")
+
+[node name="Settings" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Settings"]
+
+[node name="Timer" type="Timer" parent="Settings"]
+autostart = true
+
+[node name="Background" type="Node" parent="."]
+
+[node name="Back" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/Back"]
+motion_mirroring = Vector2(272, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Back"]
+position = Vector2(1.0842e-19, 2.38419e-07)
+scale = Vector2(0.333333, 0.333333)
+texture = ExtResource("2_k5jlv")
+centered = false
+
+[node name="PathSpawn" type="Path2D" parent="Background"]
+curve = SubResource("Curve2D_k5jlv")
+
+[node name="PathFollow" type="PathFollow2D" parent="Background/PathSpawn"]
+position = Vector2(266, -1)
+rotation = 1.57709
+
+[node name="Planet_1" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/Planet_1"]
+motion_mirroring = Vector2(272, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Planet_1"]
+position = Vector2(181, 4.76837e-07)
+scale = Vector2(0.333333, 0.333333)
+texture = ExtResource("2_k5jlv")
+centered = false
+offset = Vector2(272, 0)
+flip_v = true
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("4_kl8ac")
+
+[connection signal="timeout" from="Settings/Timer" to="." method="_on_timer_timeout"]

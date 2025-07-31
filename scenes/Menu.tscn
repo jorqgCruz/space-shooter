@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://b8276ljcqnm1t"]
+
+[ext_resource type="Script" uid="uid://ddwh8tipqqu80" path="res://assets/scripts/menu.gd" id="1_11y2r"]
+[ext_resource type="Texture2D" uid="uid://d1swkymy06t6v" path="res://assets/images/bg-preview-big.png" id="1_r67kn"]
+[ext_resource type="Theme" uid="uid://s4ydef86b1go" path="res://assets/settings/theme.tres" id="2_brbbq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upctu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_11y2r")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 272.0
+offset_bottom = 160.0
+texture = ExtResource("1_r67kn")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 15
+
+[node name="Main" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Titles" type="VBoxContainer" parent="MarginContainer/Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="MarginContainer/Main/Titles"]
+layout_mode = 2
+theme = ExtResource("2_brbbq")
+text = "LEEDEO SPACE"
+
+[node name="Title_2" type="Label" parent="MarginContainer/Main/Titles"]
+layout_mode = 2
+theme = ExtResource("2_brbbq")
+text = "SHOOTER 2D"
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 60
+
+[node name="Start" type="Button" parent="MarginContainer/Main/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_brbbq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_upctu")
+text = "Start"
+
+[node name="Exit" type="Button" parent="MarginContainer/Main/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_brbbq")
+text = "Exit"
+
+[node name="Author" type="Label" parent="MarginContainer/Main"]
+layout_mode = 2
+theme = ExtResource("2_brbbq")
+theme_override_font_sizes/font_size = 7
+text = "Designed  by Jorge Quintana González"
+
+[connection signal="pressed" from="MarginContainer/Main/Buttons/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/Main/Buttons/Exit" to="." method="_on_exit_pressed"]

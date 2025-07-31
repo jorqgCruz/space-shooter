@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://s4ydef86b1go"]
+
+[ext_resource type="FontFile" uid="uid://dvnt3r35hkm1n" path="res://assets/settings/PressStart2P-Regular.ttf" id="1_u3iex"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u3iex"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[resource]
+Button/fonts/font = ExtResource("1_u3iex")
+Button/styles/normal = SubResource("StyleBoxFlat_u3iex")
+Label/colors/font_color = Color(0.942836, 0.706317, 0.170868, 1)
+Label/colors/font_outline_color = Color(0.686275, 0.482353, 0, 1)
+Label/constants/outline_size = 2
+Label/fonts/font = ExtResource("1_u3iex")
