@@ -27,7 +27,6 @@ func motion_ctrl() ->void:
 	velocity.x=GLOBAL.getAxis().x*SPEED
 	velocity.y=GLOBAL.getAxis().y*SPEED
 	move_and_slide()
-	print(screensize)
 	position.x=clamp(position.x,0,screensize.x)
 	position.y=clamp(position.y,0,screensize.y)
 	
@@ -47,6 +46,11 @@ func dead():
 		$Flash.queue_free()
 		$AudioExplosion.play()
 		$Explosion.play("Explosion")
+func quitar_vida():
+	if(GLOBAL.vidas>0):
+		GLOBAL.vidas-=1
+		if(GLOBAL.vidas<=0):
+			dead()
 	
 
 

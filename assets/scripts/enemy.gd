@@ -17,6 +17,7 @@ func dead():
 	$Explosion/AudioListener2D.play()
 	GLOBAL.score+=1
 	
+	
 
 
 func _on_area_2d_area_entered(area):
@@ -36,5 +37,5 @@ func _on_audio_listener_2d_finished() -> void:
 
 func _on_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		body.dead()
+		body.quitar_vida()
 	pass # Replace with function body.

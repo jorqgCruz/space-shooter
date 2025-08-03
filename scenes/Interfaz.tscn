@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdthccrqv6vkc"]
+
+[ext_resource type="Theme" uid="uid://s4ydef86b1go" path="res://assets/settings/theme.tres" id="1_h274m"]
+
+[node name="Interfaz" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 272.0
+offset_bottom = 160.0
+theme_override_constants/margin_top = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 30
+
+[node name="Vida" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_h274m")
+theme_override_font_sizes/font_size = 10
+text = "Vidas:0"
+
+[node name="Puntos" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_h274m")
+theme_override_font_sizes/font_size = 10
+text = "Puntos:0"

@@ -1,24 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwkspcpu7c4bb"]
+[gd_scene load_steps=4 format=3 uid="uid://dlxgdc6pw8q4y"]
 
-[ext_resource type="Texture2D" uid="uid://d1swkymy06t6v" path="res://assets/images/bg-preview-big.png" id="1_qae0b"]
-[ext_resource type="Script" uid="uid://cjaqroihnp701" path="res://assets/scripts/gameOver.gd" id="1_vuicl"]
-[ext_resource type="Theme" uid="uid://s4ydef86b1go" path="res://assets/settings/theme.tres" id="2_vuicl"]
+[ext_resource type="Script" uid="uid://clpopuvch6mld" path="res://assets/scripts/victory.gd" id="1_7o3sp"]
+[ext_resource type="Texture2D" uid="uid://d1swkymy06t6v" path="res://assets/images/bg-preview-big.png" id="1_ienqi"]
+[ext_resource type="Theme" uid="uid://s4ydef86b1go" path="res://assets/settings/theme.tres" id="1_sdctl"]
 
-[node name="GameOver" type="Control"]
+[node name="Victory" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_vuicl")
+script = ExtResource("1_7o3sp")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 272.0
-offset_bottom = 160.0
-texture = ExtResource("1_qae0b")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.0
+anchor_top = -1.0
+anchor_right = 2.0
+anchor_bottom = 2.0
+offset_left = 272.0
+offset_top = 160.0
+offset_right = -272.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ienqi")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -33,15 +43,14 @@ theme_override_constants/margin_top = 15
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="title" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_vuicl")
-theme_override_font_sizes/font_size = 12
-text = "¡Game Over Chaval!"
+theme = ExtResource("1_sdctl")
+text = "¡Victoria!"
 
-[node name="Settings" type="Node" parent="."]
+[node name="Node" type="Node" parent="."]
 
-[node name="Timer" type="Timer" parent="Settings"]
+[node name="Timer" type="Timer" parent="Node"]
 wait_time = 0.5
 autostart = true
 
@@ -52,9 +61,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -122.5
-offset_top = -115.0
-offset_right = 122.5
+offset_left = -120.0
+offset_top = -118.0
+offset_right = 124.0
 grow_horizontal = 2
 grow_vertical = 0
 horizontal_scroll_mode = 3
@@ -74,4 +83,4 @@ Director: Jorge Quintana
 Actor: Jorge Quintana
 "
 
-[connection signal="timeout" from="Settings/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Node/Timer" to="." method="_on_timer_timeout"]

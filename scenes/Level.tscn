@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://du50vkf58qhp6"]
+[gd_scene load_steps=8 format=3 uid="uid://du50vkf58qhp6"]
 
 [ext_resource type="Script" uid="uid://coqs1nrlsd1aj" path="res://assets/scripts/level.gd" id="1_uhqny"]
 [ext_resource type="PackedScene" uid="uid://xn6qq22h2rpg" path="res://scenes/Enemy.tscn" id="2_6vs76"]
 [ext_resource type="PackedScene" uid="uid://dy16qsjlh08hc" path="res://scenes/player.tscn" id="3_kl8ac"]
 [ext_resource type="Texture2D" uid="uid://ck3siqmfj5lp1" path="res://assets/images/bg-back.png" id="4_kl8ac"]
 [ext_resource type="Texture2D" uid="uid://d01u3gyilb6hy" path="res://assets/images/bg-planet.png" id="5_qifjx"]
+[ext_resource type="PackedScene" uid="uid://cdthccrqv6vkc" path="res://scenes/Interfaz.tscn" id="6_4qegb"]
 
 [sub_resource type="Curve2D" id="Curve2D_k5jlv"]
 _data = {
@@ -16,6 +17,9 @@ point_count = 6
 script = ExtResource("1_uhqny")
 enemy = ExtResource("2_6vs76")
 player = ExtResource("3_kl8ac")
+int_puntos_para_ganar = 2
+
+[node name="Interfaz" parent="." instance=ExtResource("6_4qegb")]
 
 [node name="Settings" type="Node" parent="."]
 

@@ -14,3 +14,4 @@ func getAxis() -> Vector2:
 	axis.y=int(Input.is_key_pressed(KEY_S))-int(Input.is_key_pressed(KEY_W))
 	
 	return axis.normalized()
+	
